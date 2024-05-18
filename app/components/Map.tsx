@@ -35,19 +35,8 @@ export function Map({ data }: { data: any }) {
       container: mapContainer.current,
       center: [-52.73555, 47.57331],
       zoom: 14,
-      style: {
-        version: 8,
-        sources: {
-          osm: {
-            type: "raster",
-            tiles: ["https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"],
-            tileSize: 256,
-            attribution: "&copy; OpenStreetMap Contributors",
-            maxzoom: 19,
-          },
-        },
-        layers: [{ id: "sat", type: "raster", source: "osm" }],
-      },
+      style:
+        "https://api.maptiler.com/maps/06010d97-fcda-4e83-a576-71e1f3442a40/style.json?key=ujzdFuiMnJnX2oYBAMZp",
     });
 
     mapRef.current.on("load", () => {
@@ -213,7 +202,7 @@ export function Map({ data }: { data: any }) {
             }
           });
 
-          // console.log("added route", { route: route["01-1"] });
+          console.log("added routes", { route });
 
           setAddedData(true);
         };
