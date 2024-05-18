@@ -55,6 +55,9 @@ export function Map({ data }: { data: any }) {
       layout: {},
       paint: {
         "circle-color": "#f00",
+        "circle-radius": 12,
+        "circle-stroke-width": 2,
+        "circle-stroke-color": "black",
       },
     });
 
