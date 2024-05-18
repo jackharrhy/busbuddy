@@ -109,24 +109,33 @@ export function Map({ data }: { data: any }) {
 
     console.log("time to add data baybeeee", { data });
 
+    fetch('../../bus-icon.png')
+      .then(response => response.blob())
+      .then(blob => {
+        const img = new Image();
+        img.src = URL.createObjectURL(blob);
+
+        img.onload = function () {
+          map.addImage('bus-icon', img);
+
     map.addSource("bus", {
       type: "geojson",
       data,
     });
     map.addLayer({
       id: "bus",
-      type: "circle",
+      type: "symbol",
       source: "bus",
-      layout: {},
-      paint: {
-        "circle-color": "#f00",
-        "circle-radius": 12,
-        "circle-stroke-width": 2,
-        "circle-stroke-color": "black",
+      layout: {
+        "icon-image": "bus-icon",
+        "icon-size": 0.05, 
       },
     });
 
     setAddedData(true);
+  };
+})
+.catch(error => console.error('Error loading image:', error));
   }, [mapReady, addedData, data]);
 
   return (
