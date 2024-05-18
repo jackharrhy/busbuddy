@@ -68,18 +68,6 @@ export function Map({ data }: { data: any }) {
           const map = mapRef.current;
           invariant(map, "Map is not defined");
 
-          // Check accuracy and show a popup if below threshold
-          const accuracyThreshold = 50; // Example threshold in meters
-          if (accuracy > accuracyThreshold) {
-            const popup = new Popup()
-              .setLngLat(map.getCenter())
-              .setHTML(
-                `<h3>Low Accuracy</h3><p>Location accuracy is too low: ${accuracy} meters</p>`
-              )
-              .addTo(map);
-            return;
-          }
-
           // Add user location to map
           const userLocation = {
             type: "Feature",
@@ -108,7 +96,6 @@ export function Map({ data }: { data: any }) {
             },
           });
 
-          // Center the map to the user's location
           map.setCenter([longitude, latitude]);
         },
         (error) => {
