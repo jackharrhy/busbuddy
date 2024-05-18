@@ -51,8 +51,11 @@ wifi: "Y"
 export const loader = async () => {
   const response = await fetch(METROBUS_TIMETRACK_JSON);
 
-  // TODO turn response into geojson feature collection
-  const data = await response.json();
+  let data = await response.json();
+
+  if (!Array.isArray(data)) {
+    data = [];
+  }
 
   const featureCollection = {
     type: "FeatureCollection",
