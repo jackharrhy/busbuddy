@@ -1,13 +1,21 @@
+import { useRevalidator } from "@remix-run/react";
 import maplibregl, { Map as MaplibreMap } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import invariant from "tiny-invariant";
+import { useInterval } from "usehooks-ts";
 
 export function Map({ data }: { data: any }) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MaplibreMap>();
   const [mapReady, setMapReady] = useState(false);
   const [addedData, setAddedData] = useState(false);
+  const revalidator = useRevalidator();
+
+  useInterval(() => {
+    console.log("revalidating");
+    revalidator.revalidate();
+  }, 5000);
 
   useEffect(() => {
     if (mapRef.current) return;
@@ -61,7 +69,21 @@ export function Map({ data }: { data: any }) {
       },
     });
 
+    console.log("added data", { data, featureLength: data.features.length });
+
     setAddedData(true);
+  }, [mapReady, addedData, data]);
+
+  useEffect(() => {
+    if (!mapReady || !addedData || data === undefined) return;
+    invariant(mapRef.current, "Map not found");
+    const map = mapRef.current;
+
+    const busSource = map.getSource("bus");
+    invariant(busSource, "Bus source not found");
+    busSource.setData(data);
+
+    console.log("updating data", { data, featureLength: data.features.length });
   }, [mapReady, addedData, data]);
 
   return (
