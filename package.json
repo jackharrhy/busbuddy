@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@remix-run/dev": "^2.9.2",
+    "@types/react": "^18.3.2",
     "vite": "^5.2.11"
   }
 }
