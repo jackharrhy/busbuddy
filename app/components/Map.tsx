@@ -131,20 +131,6 @@ export function Map({ data }: { data: any }) {
             },
           });
 
-          map.addSource("bus", {
-            type: "geojson",
-            data,
-          });
-          map.addLayer({
-            id: "bus",
-            type: "symbol",
-            source: "bus",
-            layout: {
-              "icon-image": "bus-icon",
-              "icon-size": 0.05,
-            },
-          });
-
           map.addSource("stops", {
             type: "geojson",
             data: stops as GeoJSON.FeatureCollection<GeoJSON.Point>,
@@ -166,7 +152,6 @@ export function Map({ data }: { data: any }) {
             type: "geojson",
             data,
           });
-
           map.addLayer({
             id: "bus",
             type: "symbol",
