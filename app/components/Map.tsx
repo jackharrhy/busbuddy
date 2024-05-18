@@ -114,7 +114,7 @@ export function Map({ data }: { data: any }) {
 
     console.log("time to add data baybeeee", { data });
 
-    fetch("../../busbuddy-icon.png")
+    fetch("../../busbuddy-icon-c.png")
       .then((response) => response.blob())
       .then((blob) => {
         const img = new Image();
@@ -122,25 +122,6 @@ export function Map({ data }: { data: any }) {
 
         img.onload = function () {
           map.addImage("bus-icon", img);
-
-          map.addSource("bus", {
-            type: "geojson",
-            data,
-          });
-          map.addLayer({
-            id: "bus",
-            type: "symbol",
-            source: "bus",
-            layout: {
-              "icon-image": "bus-icon",
-              "icon-size": 0.05,
-            },
-          });
-
-          console.log("added data", {
-            data,
-            featureLength: data.features.length,
-          });
 
           map.addSource("routes", {
             type: "geojson",
@@ -158,6 +139,26 @@ export function Map({ data }: { data: any }) {
               "line-color": "#f00",
               "line-width": 8,
             },
+          });
+
+          map.addSource("bus", {
+            type: "geojson",
+            data,
+          });
+
+          map.addLayer({
+            id: "bus",
+            type: "symbol",
+            source: "bus",
+            layout: {
+              "icon-image": "bus-icon",
+              "icon-size": 0.2,
+            },
+          });
+
+          console.log("added data", {
+            data,
+            featureLength: data.features.length,
           });
 
           map.on("mouseenter", "bus", () => {
@@ -180,7 +181,7 @@ export function Map({ data }: { data: any }) {
             }
           });
 
-          console.log("added route", { route: route["01-1"] });
+          // console.log("added route", { route: route["01-1"] });
 
           setAddedData(true);
         };
@@ -193,7 +194,7 @@ export function Map({ data }: { data: any }) {
     invariant(mapRef.current, "Map not found");
     const map = mapRef.current;
 
-    const busSource = map.getSource("bus");
+    const busSource = map.getSource("bus") as maplibregl.GeoJSONSource;
     invariant(busSource, "Bus source not found");
     busSource.setData(data);
 
