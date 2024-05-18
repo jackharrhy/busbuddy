@@ -20,6 +20,7 @@ export function Map({ data }: { data: any }) {
     y: 0,
   });
   const [isLeft, setIsLeft] = useState(false);
+  const [isUp, setIsUp] = useState(false);
   const revalidator = useRevalidator();
 
   useInterval(() => {
@@ -103,6 +104,7 @@ export function Map({ data }: { data: any }) {
 
     console.log("time to add data baybeeee", { data });
 
+    // Load the bus icon
     fetch("../../busbuddy-icon-c.png")
       .then((response) => response.blob())
       .then((blob) => {
@@ -111,7 +113,21 @@ export function Map({ data }: { data: any }) {
 
         img.onload = function () {
           map.addImage("bus-icon", img);
+        };
+      })
+      .catch((error) => console.error("Error loading bus icon:", error));
 
+    // Load the stop icon
+    fetch("../../bus-stop.png")
+      .then((response) => response.blob())
+      .then((blob) => {
+        const img = new Image();
+        img.src = URL.createObjectURL(blob);
+
+        img.onload = function () {
+          map.addImage("stop-icon", img);
+
+          // Add route layer
           map.addSource("routes", {
             type: "geojson",
             data: route as GeoJSON.FeatureCollection<GeoJSON.LineString>,
@@ -131,23 +147,22 @@ export function Map({ data }: { data: any }) {
             },
           });
 
+          // Add stops layer
           map.addSource("stops", {
             type: "geojson",
             data: stops as GeoJSON.FeatureCollection<GeoJSON.Point>,
           });
-
           map.addLayer({
             id: "stops",
-            type: "circle",
+            type: "symbol",
             source: "stops",
-            paint: {
-              "circle-radius": 6,
-              "circle-color": "#fa0",
-              "circle-stroke-color": "#000",
-              "circle-stroke-width": 1,
+            layout: {
+              "icon-image": "stop-icon",
+              "icon-size": 0.2,
             },
           });
 
+          // Add bus layer
           map.addSource("bus", {
             type: "geojson",
             data,
@@ -184,6 +199,7 @@ export function Map({ data }: { data: any }) {
               setSelectedBus(feature.properties);
               setCardPosition({ x: e.point.x, y: e.point.y });
               setIsLeft(e.point.x > window.innerWidth / 2);
+              setIsUp(e.point.y > window.innerHeight / 2);
             }
           });
 
@@ -192,7 +208,7 @@ export function Map({ data }: { data: any }) {
           setAddedData(true);
         };
       })
-      .catch((error) => console.error("Error loading image:", error));
+      .catch((error) => console.error("Error loading stop icon:", error));
   }, [mapReady, addedData, data]);
 
   useEffect(() => {
@@ -215,6 +231,7 @@ export function Map({ data }: { data: any }) {
           details={selectedBus}
           position={cardPosition}
           isLeft={isLeft}
+          isUp={isUp}
           onClose={() => setSelectedBus(null)}
         />
       )}

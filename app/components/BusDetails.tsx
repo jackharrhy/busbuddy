@@ -2,6 +2,7 @@ interface BusDetailsCardProps {
   details: any;
   position: { x: number; y: number };
   isLeft: boolean;
+  isUp: boolean;
   onClose: () => void;
 }
 
@@ -9,24 +10,30 @@ const BusDetailsCard: React.FC<BusDetailsCardProps> = ({
   details,
   position,
   isLeft,
+  isUp,
   onClose,
 }) => {
+  const cardWidth = 250; 
+  const cardHeight = 150; 
+
   const cardStyle = {
-    top: `${position.y}px`,
-    left: isLeft ? `${position.x - 250}px` : `${position.x + 20}px`,
+    top: isUp ? 'auto' : `${position.y}px`,
+    bottom: isUp ? `${window.innerHeight - position.y}px` : 'auto',
+    left: isLeft ? `${position.x - cardWidth - 10}px` : `${position.x + 10}px`,
+    right: isLeft ? 'auto' : 'auto',
+    maxWidth: '250px',
   };
 
   const toSentenceCase = (str: string): string => {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-}
-
+  };
 
   const deviationSentenceCase = toSentenceCase(details.deviation);
 
   return (
     <div
       style={cardStyle}
-      className="absolute top-4 left-4 bg-white p-4 border-black border-2 rounded shadow-lg z-10 max-w-xs"
+      className="absolute bg-white p-4 border-black border-2 rounded shadow-lg z-10"
     >
       <div className="flex justify-between items-start">
         <h3 className="font-bold text-2xl pb-1">Bus Details</h3>
