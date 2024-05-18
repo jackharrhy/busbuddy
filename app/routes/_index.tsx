@@ -5,6 +5,9 @@ import { Map } from "~/components/Map";
 const METROBUS_API_URL = "https://www.metrobus.co.ca/api";
 const METROBUS_TIMETRACK_JSON = `${METROBUS_API_URL}/timetrack/json/`;
 
+const METROBUS_MOBILE_URL = "https://metrobusmobile.com";
+const METROBUS_BUS_LOCATE_HTML = `${METROBUS_MOBILE_URL}/bus_locate.asp?route=01-1`;
+
 /*
 the response looks like this, an array of:
 bulletin: "None"
@@ -81,7 +84,7 @@ export default function Index() {
     <>
       <div className="flex justify-center items-center w-full h-32 bg-black/50 backdrop-blur">
         <div className="bg-white p-4 shadow-xl rounded">
-          <h1 className="text-3xl font-bold">metrosux</h1>
+          <h1 className="text-3xl font-bold">busbuddy</h1>
         </div>
       </div>
       <Map data={data} />
