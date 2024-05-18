@@ -1,5 +1,6 @@
 services:
   metrosux:
+    image: ghcr.io/jackharrhy/metrosux:latest
     build: .
     ports:
       - 127.0.0.1:3001:3000
