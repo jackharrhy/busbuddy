@@ -1,17 +1,19 @@
 import maplibregl, { Map as MaplibreMap } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import invariant from "tiny-invariant";
 
-export function Map() {
+export function Map({ data }: { data: any }) {
   const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<MaplibreMap>();
+  const mapRef = useRef<MaplibreMap>();
+  const [mapReady, setMapReady] = useState(false);
+  const [addedData, setAddedData] = useState(false);
 
   useEffect(() => {
-    if (map.current) return;
+    if (mapRef.current) return;
     invariant(mapContainer.current, "Map container not found");
 
-    map.current = new maplibregl.Map({
+    mapRef.current = new maplibregl.Map({
       container: mapContainer.current,
       center: [-52.73555, 47.57331],
       zoom: 14,
@@ -29,7 +31,35 @@ export function Map() {
         layers: [{ id: "sat", type: "raster", source: "osm" }],
       },
     });
+
+    mapRef.current.on("load", () => {
+      setMapReady(true);
+    });
   });
+
+  useEffect(() => {
+    if (!mapReady || addedData || data === undefined) return;
+    invariant(mapRef.current, "Map not found");
+    const map = mapRef.current;
+
+    console.log("time to add data baybeeee", { data });
+
+    map.addSource("bus", {
+      type: "geojson",
+      data,
+    });
+    map.addLayer({
+      id: "bus",
+      type: "circle",
+      source: "bus",
+      layout: {},
+      paint: {
+        "circle-color": "#f00",
+      },
+    });
+
+    setAddedData(true);
+  }, [mapReady, addedData, data]);
 
   return (
     <div className="top-0 left-0 -z-10 absolute w-dvw h-dvh">
