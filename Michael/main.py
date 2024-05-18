@@ -32,7 +32,7 @@ with open("stops.json", "r") as file:
     IDs = [stop['stop_id'] for stop in stops]
 
 for i in range(len(stops)):
-    f = Feature(geometry=Point((latitudes[i], lontitudes[i])), properties={"stop_name": names[i], "stop_id": IDs[i]})
+    f = Feature(geometry=Point((lontitudes[i], latitudes[i])), properties={"stop_name": names[i], "stop_id": IDs[i]})
     features.append(f)
 
 

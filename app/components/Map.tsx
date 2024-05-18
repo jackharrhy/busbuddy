@@ -3,11 +3,11 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import invariant from "tiny-invariant";
-import route from "./route.json";
 import BusDetails from "./BusDetails";
 import { useInterval } from "usehooks-ts";
 
-const { Map: MaplibreMap, Popup } = maplibregl;
+import stops from "./stops.json";
+import route from "./route.json";
 
 export function Map({ data }: { data: any }) {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -123,25 +123,6 @@ export function Map({ data }: { data: any }) {
         img.onload = function () {
           map.addImage("bus-icon", img);
 
-          map.addSource("bus", {
-            type: "geojson",
-            data,
-          });
-          map.addLayer({
-            id: "bus",
-            type: "symbol",
-            source: "bus",
-            layout: {
-              "icon-image": "bus-icon",
-              "icon-size": 0.05,
-            },
-          });
-
-          console.log("added data", {
-            data,
-            featureLength: data.features.length,
-          });
-
           map.addSource("routes", {
             type: "geojson",
             data: route as GeoJSON.FeatureCollection<GeoJSON.LineString>,
@@ -157,7 +138,44 @@ export function Map({ data }: { data: any }) {
             paint: {
               "line-color": "#f00",
               "line-width": 8,
+              "line-opacity": 0.2,
             },
+          });
+
+          map.addSource("bus", {
+            type: "geojson",
+            data,
+          });
+          map.addLayer({
+            id: "bus",
+            type: "symbol",
+            source: "bus",
+            layout: {
+              "icon-image": "bus-icon",
+              "icon-size": 0.05,
+            },
+          });
+
+          map.addSource("stops", {
+            type: "geojson",
+            data: stops as GeoJSON.FeatureCollection<GeoJSON.Point>,
+          });
+
+          map.addLayer({
+            id: "stops",
+            type: "circle",
+            source: "stops",
+            paint: {
+              "circle-radius": 6,
+              "circle-color": "#fa0",
+              "circle-stroke-color": "#000",
+              "circle-stroke-width": 1,
+            },
+          });
+
+          console.log("added data", {
+            data,
+            featureLength: data.features.length,
           });
 
           map.on("mouseenter", "bus", () => {

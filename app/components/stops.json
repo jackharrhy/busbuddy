@@ -1,0 +1,929 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.735682, 47.57337]
+      },
+      "properties": {
+        "stop_name": "University Centre",
+        "stop_id": 1150
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.738179, 47.571841]
+      },
+      "properties": {
+        "stop_name": "Clinch Cres near Arctic Avenue",
+        "stop_id": 1145
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.73818, 47.57154]
+      },
+      "properties": {
+        "stop_name": "Clinch Cres near Prince Philip Drive",
+        "stop_id": 4980
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.737063, 47.570838]
+      },
+      "properties": {
+        "stop_name": "Westerland Road near CBC",
+        "stop_id": 2680
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.735638, 47.570069]
+      },
+      "properties": {
+        "stop_name": "Westerland Rd -  Education Building",
+        "stop_id": 2790
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.7397, 47.57276]
+      },
+      "properties": {
+        "stop_name": "Clinch Cres opp Faculty of Med",
+        "stop_id": 4982
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.740561, 47.573008]
+      },
+      "properties": {
+        "stop_name": "Clinch Cres Faculty of Medicine",
+        "stop_id": 4960
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.733298, 47.569269]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Avenue civic 267",
+        "stop_id": 1640
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.730911, 47.570761]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Avenue Memorial University",
+        "stop_id": 1570
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.730232, 47.570949]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Avenue opposite MUN",
+        "stop_id": 1645
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.740242, 47.569167]
+      },
+      "properties": {
+        "stop_name": "University Avenue  - St. Andrews School",
+        "stop_id": 1140
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.728838, 47.571792]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Ave - opp 225",
+        "stop_id": 1565
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.735412, 47.567339]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Avenue - Keegan Court",
+        "stop_id": 1635
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.743789, 47.572631]
+      },
+      "properties": {
+        "stop_name": "Clinch Cres Janeway",
+        "stop_id": 2670
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.728249, 47.571942]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Avenue civic 219",
+        "stop_id": 1650
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.735998, 47.56707]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Ave opposite Keegan Court",
+        "stop_id": 1575
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.741353, 47.568497]
+      },
+      "properties": {
+        "stop_name": "University Ave civic 136",
+        "stop_id": 1215
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.744499, 47.572354]
+      },
+      "properties": {
+        "stop_name": "Clinch Cres opp Janeway",
+        "stop_id": 4985
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.72746, 47.57101]
+      },
+      "properties": {
+        "stop_name": "Rodney Street civic 3",
+        "stop_id": 5050
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.72721, 47.57078]
+      },
+      "properties": {
+        "stop_name": "Rodney Street civic 2",
+        "stop_id": 3480
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.726598, 47.573044]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Avenue - Burtons Pond",
+        "stop_id": 1560
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.72738, 47.57523]
+      },
+      "properties": {
+        "stop_name": "Allandale Road - A + C",
+        "stop_id": 1240
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.726538, 47.572873]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Avenue civic 207",
+        "stop_id": 1655
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.72676, 47.57491]
+      },
+      "properties": {
+        "stop_name": "Allandale Road civic 72",
+        "stop_id": 3490
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.744689, 47.569019]
+      },
+      "properties": {
+        "stop_name": "Clinch Cres west side of HSC",
+        "stop_id": 2675
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.74518, 47.56918]
+      },
+      "properties": {
+        "stop_name": "Clinch Cres west of HSC",
+        "stop_id": 2665
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.742511, 47.566922]
+      },
+      "properties": {
+        "stop_name": "University Ave civic 158",
+        "stop_id": 1220
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.736247, 47.565285]
+      },
+      "properties": {
+        "stop_name": "Anderson Ave civic 25 Cardiology Clinic",
+        "stop_id": 2685
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.746403, 47.570611]
+      },
+      "properties": {
+        "stop_name": "Clinch Cres by employee parking",
+        "stop_id": 2795
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.725325, 47.570669]
+      },
+      "properties": {
+        "stop_name": "Whiteway St civic 8",
+        "stop_id": 3470
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.738207, 47.564885]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Ave civic 389 (Guvnor Pub)",
+        "stop_id": 1630
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.738388, 47.56492]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Ave at Summerville",
+        "stop_id": 1580
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.724602, 47.570705]
+      },
+      "properties": {
+        "stop_name": "Whiteway Street civic 1",
+        "stop_id": 5045
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.742525, 47.565583]
+      },
+      "properties": {
+        "stop_name": "University Avenue civic 175",
+        "stop_id": 1135
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.723974, 47.575142]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Ave opp Churchill Square",
+        "stop_id": 1555
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.733546, 47.563933]
+      },
+      "properties": {
+        "stop_name": "Anderson Ave civic 3",
+        "stop_id": 2690
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.742695, 47.564755]
+      },
+      "properties": {
+        "stop_name": "University Ave civic 186",
+        "stop_id": 1225
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.723293, 47.575331]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Avenue - Churchill Square",
+        "stop_id": 1660
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.733853, 47.563267]
+      },
+      "properties": {
+        "stop_name": "Freshwater Rd civic 232",
+        "stop_id": 2780
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.738425, 47.563286]
+      },
+      "properties": {
+        "stop_name": "Freshwater Rd civic 266",
+        "stop_id": 2785
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.734015, 47.56313]
+      },
+      "properties": {
+        "stop_name": "Freshwater Road civic 245",
+        "stop_id": 3080
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.722431, 47.570048]
+      },
+      "properties": {
+        "stop_name": "Bonaventure Ave civic 95",
+        "stop_id": 6186
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.743191, 47.564075]
+      },
+      "properties": {
+        "stop_name": "University Avenue civic 193",
+        "stop_id": 1130
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.747875, 47.566978]
+      },
+      "properties": {
+        "stop_name": "Baird Place opp Canadian Blood Services",
+        "stop_id": 3500
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.747901, 47.566766]
+      },
+      "properties": {
+        "stop_name": "Baird Pl Canadian Blood Services",
+        "stop_id": 6160
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.741108, 47.563114]
+      },
+      "properties": {
+        "stop_name": "Freshwater Road civic286",
+        "stop_id": 1585
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.742806, 47.563492]
+      },
+      "properties": {
+        "stop_name": "Oxen Pond Road civic 8",
+        "stop_id": 1125
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.741389, 47.5629]
+      },
+      "properties": {
+        "stop_name": "Freshwater Road civic 313",
+        "stop_id": 1625
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.742778, 47.563344]
+      },
+      "properties": {
+        "stop_name": "Oxen Pond Road civic 3",
+        "stop_id": 1230
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.7292, 47.56315]
+      },
+      "properties": {
+        "stop_name": "Freshwater Rd civic 190",
+        "stop_id": 2775
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.728377, 47.56312]
+      },
+      "properties": {
+        "stop_name": "Freshwater Road at Keane Pl",
+        "stop_id": 2695
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.741322, 47.561653]
+      },
+      "properties": {
+        "stop_name": "Stamps Lane civic 64",
+        "stop_id": 1120
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.749072, 47.565317]
+      },
+      "properties": {
+        "stop_name": "Baird Place civic 30",
+        "stop_id": 3510
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.71946, 47.57002]
+      },
+      "properties": {
+        "stop_name": "Bonaventure Ave civic 84",
+        "stop_id": 3460
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.7415, 47.56174]
+      },
+      "properties": {
+        "stop_name": "Stamps Lane civic 59",
+        "stop_id": 1232
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.731706, 47.56143]
+      },
+      "properties": {
+        "stop_name": "Empire Avenue Taxation Centre",
+        "stop_id": 3085
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.748986, 47.565061]
+      },
+      "properties": {
+        "stop_name": "Baird Place civic 35",
+        "stop_id": 1375
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.728204, 47.582911]
+      },
+      "properties": {
+        "stop_name": "Allandale Rd near Confed Bldg",
+        "stop_id": 3210
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.73159, 47.561292]
+      },
+      "properties": {
+        "stop_name": "Empire Avenue civic 265",
+        "stop_id": 3075
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.720578, 47.577922]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Avenue civic 147",
+        "stop_id": 1665
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.724875, 47.5634]
+      },
+      "properties": {
+        "stop_name": "Merrymeeting Rd civic 204",
+        "stop_id": 2770
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.728694, 47.58345]
+      },
+      "properties": {
+        "stop_name": "Allandale Rd opp Confed Building",
+        "stop_id": 1210
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.724572, 47.563389]
+      },
+      "properties": {
+        "stop_name": "Merrymeeting Road civic 197",
+        "stop_id": 2700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.720403, 47.578175]
+      },
+      "properties": {
+        "stop_name": "Elizabeth Ave - St. Patricks Home",
+        "stop_id": 1550
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.72255, 47.564472]
+      },
+      "properties": {
+        "stop_name": "Merrymeeting Rd civic 150",
+        "stop_id": 2765
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.72166, 47.56467]
+      },
+      "properties": {
+        "stop_name": "Merrymeeting Road civic 117",
+        "stop_id": 2705
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.733936, 47.559991]
+      },
+      "properties": {
+        "stop_name": "Empire Ave opp civic 309",
+        "stop_id": 3090
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.7177, 47.56998]
+      },
+      "properties": {
+        "stop_name": "Bonaventure Ave opposite civic 58",
+        "stop_id": 3445
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.749712, 47.563861]
+      },
+      "properties": {
+        "stop_name": "Vinnicombe St civic 1",
+        "stop_id": 6159
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.724681, 47.582742]
+      },
+      "properties": {
+        "stop_name": "Confederation Building",
+        "stop_id": 1155
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.745689, 47.561489]
+      },
+      "properties": {
+        "stop_name": "Freshwater Road at Mana Bakery",
+        "stop_id": 1590
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.734158, 47.559719]
+      },
+      "properties": {
+        "stop_name": "Empire Avenue civic 309",
+        "stop_id": 3070
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.744289, 47.560872]
+      },
+      "properties": {
+        "stop_name": "Crosbie Road - Viking Building",
+        "stop_id": 2965
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.720211, 47.5652]
+      },
+      "properties": {
+        "stop_name": "Merrymeeting Rd civic 96",
+        "stop_id": 2760
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.744555, 47.560903]
+      },
+      "properties": {
+        "stop_name": "Crosbie Road RBC",
+        "stop_id": 2805
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.743003, 47.560419]
+      },
+      "properties": {
+        "stop_name": "Wishingwell Road - Opposite civic 69",
+        "stop_id": 1235
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.750767, 47.564106]
+      },
+      "properties": {
+        "stop_name": "Vinnicombe Street civic 10",
+        "stop_id": 3520
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.741689, 47.559828]
+      },
+      "properties": {
+        "stop_name": "Terra Nova Road civic 79",
+        "stop_id": 1115
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.719335, 47.565287]
+      },
+      "properties": {
+        "stop_name": "Merrymeeting Road civic 75",
+        "stop_id": 2710
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.746348, 47.561019]
+      },
+      "properties": {
+        "stop_name": "Freshwater Rd civic 341 Credit Union",
+        "stop_id": 1620
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.73595, 47.558944]
+      },
+      "properties": {
+        "stop_name": "Empire Avenue - opposite civic 325",
+        "stop_id": 1080
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.734867, 47.558466]
+      },
+      "properties": {
+        "stop_name": "Cashin Ave civic 65",
+        "stop_id": 1265
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.717564, 47.56585]
+      },
+      "properties": {
+        "stop_name": "Merrymeeting Rd civic 32",
+        "stop_id": 2755
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.752972, 47.564134]
+      },
+      "properties": {
+        "stop_name": "Vinnicombe St opp civic 28",
+        "stop_id": 6158
+      }
+    }
+  ]
+}
