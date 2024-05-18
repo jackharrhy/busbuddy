@@ -144,9 +144,7 @@ export function Map({ data }: { data: any }) {
 
           map.addSource("routes", {
             type: "geojson",
-            data: route[
-              "01-1"
-            ] as GeoJSON.FeatureCollection<GeoJSON.LineString>,
+            data: route as GeoJSON.FeatureCollection<GeoJSON.LineString>,
           });
           map.addLayer({
             id: "routes",
