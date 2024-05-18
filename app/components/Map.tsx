@@ -116,7 +116,7 @@ export function Map({ data }: { data: any }) {
 
     console.log("time to add data baybeeee", { data });
 
-    fetch("../../bus-icon.png")
+    fetch("../../busbuddy-icon.png")
       .then((response) => response.blob())
       .then((blob) => {
         const img = new Image();
