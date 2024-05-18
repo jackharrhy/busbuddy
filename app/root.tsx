@@ -1,4 +1,5 @@
 import { Links, Meta, Outlet, Scripts } from "@remix-run/react";
+import "./index.css";
 
 export default function App() {
   return (
@@ -9,7 +10,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <h1>metrosux</h1>
         <Outlet />
         <Scripts />
       </body>
