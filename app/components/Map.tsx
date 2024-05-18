@@ -2,6 +2,7 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import invariant from "tiny-invariant";
+import route from "./route.json";
 
 const { Map: MaplibreMap, Popup } = maplibregl;
 
@@ -118,19 +119,40 @@ export function Map({ data }: { data: any }) {
         img.onload = function () {
           map.addImage('bus-icon', img);
 
-    map.addSource("bus", {
-      type: "geojson",
-      data,
-    });
-    map.addLayer({
-      id: "bus",
-      type: "symbol",
-      source: "bus",
-      layout: {
-        "icon-image": "bus-icon",
-        "icon-size": 0.05, 
-      },
-    });
+          map.addSource("bus", {
+            type: "geojson",
+            data,
+          });
+          map.addLayer({
+            id: "bus",
+            type: "symbol",
+            source: "bus",
+            layout: {
+              "icon-image": "bus-icon",
+              "icon-size": 0.05, 
+            },
+          });
+
+          console.log(route)
+          map.addSource("routes", {
+            type: "geojson",
+            data: route["01-1"],
+          });
+          map.addLayer({
+            id: "routes",
+            type: "line",
+            source: "routes",
+            'layout': {
+              'line-join': 'round',
+              'line-cap': 'round'
+            },
+            'paint': {
+              'line-color': '#f00',
+              'line-width': 8
+            }
+          });
+    // call to add source for the data
+    // all to add layer for the visuals
 
     setAddedData(true);
   };

@@ -1,3 +1,5 @@
+import fs from "fs/promises";
+
 async function getRoute(num) {
     num = num.toString();
     if (num.length === 1) {
@@ -46,5 +48,4 @@ for (let number of routeNumbers) {
 // let route = await getRoute(3);
 // all_routes['03-1'] = route;
 
-console.log(all_routes['01-1'].features[0].geometry.coordinates);
-
+fs.writeFile('Jason/route.json', JSON.stringify(all_routes));
