@@ -4,6 +4,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import invariant from "tiny-invariant";
 import BusDetails from "./BusDetails";
+import StopDetails from "./StopDetails"
 import { useInterval } from "usehooks-ts";
 
 import stops from "./stops.json";
@@ -15,6 +16,7 @@ export function Map({ data }: { data: any }) {
   const [mapReady, setMapReady] = useState(false);
   const [addedData, setAddedData] = useState(false);
   const [selectedBus, setSelectedBus] = useState<any>(null);
+  const [selectedBusStop, setSelectedBusStop] = useState<any>(null);
   const [cardPosition, setCardPosition] = useState<{ x: number; y: number }>({
     x: 0,
     y: 0,
@@ -190,12 +192,21 @@ export function Map({ data }: { data: any }) {
             map.getCanvas().style.cursor = "";
           });
 
+          map.on("mouseenter", "stops", () => {
+            map.getCanvas().style.cursor = "pointer";
+          });
+
+          map.on("mouseleave", "stops", () => {
+            map.getCanvas().style.cursor = "";
+          });
+
           map.on("click", "bus", (e: maplibregl.MapMouseEvent) => {
             const features = map.queryRenderedFeatures(e.point, {
               layers: ["bus"],
             });
             if (features.length > 0) {
               const feature = features[0];
+              console.log(feature);
               setSelectedBus(feature.properties);
               setCardPosition({ x: e.point.x, y: e.point.y });
               setIsLeft(e.point.x > window.innerWidth / 2);
@@ -203,7 +214,23 @@ export function Map({ data }: { data: any }) {
             }
           });
 
+          map.on("click", "stops", (e: maplibregl.MapMouseEvent) => {
+            const features = map.queryRenderedFeatures(e.point, {
+              layers: ["stops"],
+            });
+            if (features.length > 0) {
+              const feature = features[0];
+              console.log(feature);
+              setSelectedBusStop(feature.properties);
+              setCardPosition({ x: e.point.x, y: e.point.y });
+              setIsLeft(e.point.x > window.innerWidth / 2);
+              setIsUp(e.point.y > window.innerHeight / 2);
+            }
+          });
+
           console.log("added routes", { route });
+
+          console.log("added stops", {stops} )
 
           setAddedData(true);
         };
@@ -233,6 +260,15 @@ export function Map({ data }: { data: any }) {
           isLeft={isLeft}
           isUp={isUp}
           onClose={() => setSelectedBus(null)}
+        />
+      )}
+      {selectedBusStop && (
+        <StopDetails
+          details={selectedBusStop}
+          position={cardPosition}
+          isLeft={isLeft}
+          isUp={isUp}
+          onClose={() => setSelectedBusStop(null)}
         />
       )}
     </div>

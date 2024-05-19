@@ -14,7 +14,6 @@ const BusDetailsCard: React.FC<BusDetailsCardProps> = ({
   onClose,
 }) => {
   const cardWidth = 250; 
-  const cardHeight = 150; 
 
   const cardStyle = {
     top: isUp ? 'auto' : `${position.y}px`,
