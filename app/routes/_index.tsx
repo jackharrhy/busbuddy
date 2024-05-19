@@ -82,9 +82,9 @@ export default function Index() {
 
   return (
     <>
-      <div className="flex justify-center items-center w-full h-32 bg-black/50 backdrop-blur">
-        <div className="bg-white p-4 shadow-xl rounded">
-          <h1 className="text-3xl font-bold">busbuddy</h1>
+      <div className="flex justify-center items-center w-full h-40 bg-gray-700 bg-opacity-50 backdrop-blur">
+        <div className="bg-white shadow-xl rounded-lg">
+          <img className="h-32" src="../public/Bus_Buddy_Logo.webp"/>
         </div>
       </div>
       <Map data={data} />
