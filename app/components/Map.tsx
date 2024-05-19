@@ -4,7 +4,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import invariant from "tiny-invariant";
 import BusDetails from "./BusDetails";
-import StopDetails from "./StopDetails"
+import StopDetails from "./StopDetails";
 import { useInterval } from "usehooks-ts";
 
 import stops from "./stops.json";
@@ -23,6 +23,7 @@ export function Map({ data }: { data: any }) {
   });
   const [isLeft, setIsLeft] = useState(false);
   const [isUp, setIsUp] = useState(false);
+  const [shownRoute, setShownRoute] = useState<number | null>(null);
   const revalidator = useRevalidator();
 
   useInterval(() => {
@@ -45,23 +46,20 @@ export function Map({ data }: { data: any }) {
     mapRef.current.on("load", () => {
       setMapReady(true);
     });
-  });
+  }, []);
 
   useEffect(() => {
     if (!mapReady) return;
     invariant(mapRef.current, "Map not found");
 
-    // Get user location
+    const map = mapRef.current;
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const { latitude, longitude, accuracy } = position.coords;
+          const { latitude, longitude } = position.coords;
 
-          const map = mapRef.current;
-          invariant(map, "Map is not defined");
-
-          // Add user location to map
-          const userLocation = {
+          const userLocation: GeoJSON.Feature<GeoJSON.Point> = {
             type: "Feature",
             geometry: {
               type: "Point",
@@ -70,25 +68,27 @@ export function Map({ data }: { data: any }) {
             properties: {},
           };
 
-          map.addSource("user-location", {
-            type: "geojson",
-            data: userLocation as any,
-          });
+          if (map) {
+            map.addSource("user-location", {
+              type: "geojson",
+              data: userLocation,
+            });
 
-          map.addLayer({
-            id: "user-location",
-            type: "circle",
-            source: "user-location",
-            layout: {},
-            paint: {
-              "circle-color": "#00FF00",
-              "circle-radius": 12,
-              "circle-stroke-width": 2,
-              "circle-stroke-color": "black",
-            },
-          });
+            map.addLayer({
+              id: "user-location",
+              type: "circle",
+              source: "user-location",
+              layout: {},
+              paint: {
+                "circle-color": "#00FF00",
+                "circle-radius": 12,
+                "circle-stroke-width": 2,
+                "circle-stroke-color": "black",
+              },
+            });
 
-          map.setCenter([longitude, latitude]);
+            map.setCenter([longitude, latitude]);
+          }
         },
         (error) => {
           console.error("Error getting user location:", error);
@@ -104,138 +104,174 @@ export function Map({ data }: { data: any }) {
     invariant(mapRef.current, "Map not found");
     const map = mapRef.current;
 
-    console.log("time to add data baybeeee", { data });
+    const loadImage = (url: string, id: string) =>
+      fetch(url)
+        .then((response) => response.blob())
+        .then((blob) => {
+          const img = new Image();
+          img.src = URL.createObjectURL(blob);
 
-    // Load the bus icon
-    fetch("../../busbuddy-icon-c.png")
-      .then((response) => response.blob())
-      .then((blob) => {
-        const img = new Image();
-        img.src = URL.createObjectURL(blob);
-
-        img.onload = function () {
-          map.addImage("bus-icon", img);
-        };
-      })
-      .catch((error) => console.error("Error loading bus icon:", error));
-
-    // Load the stop icon
-    fetch("../../bus-stop.png")
-      .then((response) => response.blob())
-      .then((blob) => {
-        const img = new Image();
-        img.src = URL.createObjectURL(blob);
-
-        img.onload = function () {
-          map.addImage("stop-icon", img);
-
-          // Add route layer
-          map.addSource("routes", {
-            type: "geojson",
-            data: route as GeoJSON.FeatureCollection<GeoJSON.LineString>,
-          });
-          map.addLayer({
-            id: "routes",
-            type: "line",
-            source: "routes",
-            layout: {
-              "line-join": "round",
-              "line-cap": "round",
-            },
-            paint: {
-              "line-color": "#f00",
-              "line-width": 8,
-              "line-opacity": 0.2,
-            },
-          });
-
-          // Add stops layer
-          map.addSource("stops", {
-            type: "geojson",
-            data: stops as GeoJSON.FeatureCollection<GeoJSON.Point>,
-          });
-          map.addLayer({
-            id: "stops",
-            type: "symbol",
-            source: "stops",
-            layout: {
-              "icon-image": "stop-icon",
-              "icon-size": 0.2,
-            },
-          });
-
-          // Add bus layer
-          map.addSource("bus", {
-            type: "geojson",
-            data,
-          });
-          map.addLayer({
-            id: "bus",
-            type: "symbol",
-            source: "bus",
-            layout: {
-              "icon-image": "bus-icon",
-              "icon-size": 0.2,
-            },
-          });
-
-          console.log("added data", {
-            data,
-            featureLength: data.features.length,
-          });
-
-          map.on("mouseenter", "bus", () => {
-            map.getCanvas().style.cursor = "pointer";
-          });
-
-          map.on("mouseleave", "bus", () => {
-            map.getCanvas().style.cursor = "";
-          });
-
-          map.on("mouseenter", "stops", () => {
-            map.getCanvas().style.cursor = "pointer";
-          });
-
-          map.on("mouseleave", "stops", () => {
-            map.getCanvas().style.cursor = "";
-          });
-
-          map.on("click", "bus", (e: maplibregl.MapMouseEvent) => {
-            const features = map.queryRenderedFeatures(e.point, {
-              layers: ["bus"],
-            });
-            if (features.length > 0) {
-              const feature = features[0];
-              console.log(feature);
-              setSelectedBus(feature.properties);
-              setCardPosition({ x: e.point.x, y: e.point.y });
-              setIsLeft(e.point.x > window.innerWidth / 2);
-              setIsUp(e.point.y > window.innerHeight / 2);
+          img.onload = () => {
+            if (map) {
+              map.addImage(id, img);
             }
+          };
+        })
+        .catch((error) => console.error(`Error loading ${id} icon:`, error));
+
+    loadImage("../../busbuddy-icon-c.png", "bus-icon");
+    loadImage("../../bus-stop.png", "stop-icon");
+
+    const addRouteLayer = () => {
+      if (map) {
+        map.addSource("routes", {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: [],
+          },
+        });
+
+        map.addLayer({
+          id: "routes",
+          type: "line",
+          source: "routes",
+          layout: {
+            "line-join": "round",
+            "line-cap": "round",
+          },
+          paint: {
+            "line-color": "#00f",
+            "line-width": 8,
+            "line-opacity": 1,
+          },
+        });
+      }
+    };
+
+    const addStopsLayer = () => {
+      if (map) {
+        map.addSource("stops", {
+          type: "geojson",
+          data: stops as GeoJSON.FeatureCollection<GeoJSON.Point>,
+        });
+
+        map.addLayer({
+          id: "stops",
+          type: "symbol",
+          source: "stops",
+          layout: {
+            "icon-image": "stop-icon",
+            "icon-size": 0.2,
+          },
+        });
+      }
+    };
+
+    const addBusLayer = () => {
+      if (map) {
+        map.addSource("bus", {
+          type: "geojson",
+          data,
+        });
+
+        map.addLayer({
+          id: "bus",
+          type: "symbol",
+          source: "bus",
+          layout: {
+            "icon-image": "bus-icon",
+            "icon-size": 0.2,
+          },
+        });
+
+        map.on("mouseenter", "bus", () => {
+          map.getCanvas().style.cursor = "pointer";
+        });
+
+        map.on("mouseleave", "bus", () => {
+          map.getCanvas().style.cursor = "";
+        });
+
+        map.on("click", "bus", (e: maplibregl.MapMouseEvent) => {
+          const features = map.queryRenderedFeatures(e.point, {
+            layers: ["bus"],
           });
 
-          map.on("click", "stops", (e: maplibregl.MapMouseEvent) => {
-            const features = map.queryRenderedFeatures(e.point, {
-              layers: ["stops"],
-            });
-            if (features.length > 0) {
-              const feature = features[0];
-              console.log(feature);
-              setSelectedBusStop(feature.properties);
-              setCardPosition({ x: e.point.x, y: e.point.y });
-              setIsLeft(e.point.x > window.innerWidth / 2);
-              setIsUp(e.point.y > window.innerHeight / 2);
+          if (features.length > 0) {
+            const feature = features[0];
+            setSelectedBus(feature.properties);
+            setCardPosition({ x: e.point.x, y: e.point.y });
+            setIsLeft(e.point.x > window.innerWidth / 2);
+            setIsUp(e.point.y > window.innerHeight / 2);
+
+            const routeParts = feature.properties.current_route.split("-");
+            const routeNumber = routeParts.length > 1 ? routeParts[0] : null;
+            const filteredRoute = parseInt(routeNumber);
+
+            setShownRoute(filteredRoute);
+
+            if (filteredRoute) {
+              const filteredRouteFeature = route.features.find(
+                (feature) => feature.properties.routeNumber === filteredRoute
+              );
+
+              if (filteredRouteFeature) {
+                const routesSource = map.getSource(
+                  "routes"
+                ) as maplibregl.GeoJSONSource;
+
+                const geojsonFeature: GeoJSON.Feature<GeoJSON.LineString> = {
+                  type: "Feature",
+                  geometry: {
+                    type: "LineString",
+                    coordinates: filteredRouteFeature.geometry.coordinates,
+                  },
+                  properties: filteredRouteFeature.properties,
+                };
+
+                routesSource.setData({
+                  type: "FeatureCollection",
+                  features: [geojsonFeature],
+                });
+              } else {
+                console.error("Route not found for route number:", routeNumber);
+              }
+            } else {
+              console.error("Invalid route number:", routeNumber);
             }
+          }
+        });
+
+        map.on("mouseenter", "stops", () => {
+          map.getCanvas().style.cursor = "pointer";
+        });
+
+        map.on("mouseleave", "stops", () => {
+          map.getCanvas().style.cursor = "";
+        });
+
+        map.on("click", "stops", (e: maplibregl.MapMouseEvent) => {
+          const features = map.queryRenderedFeatures(e.point, {
+            layers: ["stops"],
           });
 
-          console.log("added routes", { route });
+          if (features.length > 0) {
+            const feature = features[0];
+            setSelectedBusStop(feature.properties);
+            setCardPosition({ x: e.point.x, y: e.point.y });
+            setIsLeft(e.point.x > window.innerWidth / 2);
+            setIsUp(e.point.y > window.innerHeight / 2);
+          }
+        });
+      }
+    };
 
-          console.log("added stops", {stops} )
+    addRouteLayer();
+    addStopsLayer();
+    addBusLayer();
 
-          setAddedData(true);
-        };
-      })
-      .catch((error) => console.error("Error loading stop icon:", error));
+    setAddedData(true);
   }, [mapReady, addedData, data]);
 
   useEffect(() => {
@@ -243,11 +279,11 @@ export function Map({ data }: { data: any }) {
     invariant(mapRef.current, "Map not found");
     const map = mapRef.current;
 
-    const busSource = map.getSource("bus") as maplibregl.GeoJSONSource;
-    invariant(busSource, "Bus source not found");
-    busSource.setData(data);
-
-    console.log("updating data", { data, featureLength: data.features.length });
+    if (map) {
+      const busSource = map.getSource("bus") as maplibregl.GeoJSONSource;
+      invariant(busSource, "Bus source not found");
+      busSource.setData(data);
+    }
   }, [mapReady, addedData, data]);
 
   return (
