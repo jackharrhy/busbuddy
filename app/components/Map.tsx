@@ -41,6 +41,14 @@ export function Map({ data }: { data: any }) {
       zoom: 14,
       style:
         "https://api.maptiler.com/maps/06010d97-fcda-4e83-a576-71e1f3442a40/style.json?key=ujzdFuiMnJnX2oYBAMZp",
+      bounds: [
+        [-52.799, 47.510], // Southwest coordinates of St. John's, Newfoundland
+        [-52.650, 47.640], // Northeast coordinates of St. John's, Newfoundland
+      ],
+      maxBounds: [
+        [-52.799, 47.510], // Southwest coordinates of St. John's, Newfoundland
+        [-52.650, 47.640], // Northeast coordinates of St. John's, Newfoundland
+      ],
     });
 
     mapRef.current.on("load", () => {
